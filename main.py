@@ -20,8 +20,8 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-query=input("Ask your query:")
-def main(query:str=query):
+
+def main(query:str):
     endpoint = os.getenv("FOUNDRY_PROJECT_ENDPOINT")
     agent_name = os.getenv("FOUNDRY_AGENT_NAME")
     agent_version = os.getenv("FOUNDRY_AGENT_VERSION", "1")
@@ -114,4 +114,5 @@ def main(query:str=query):
 
 
 if __name__ == "__main__":
-    main()
+    query=input("Ask your query:")
+    main(query)
