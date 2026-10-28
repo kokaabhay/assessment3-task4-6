@@ -46,7 +46,7 @@ def main(query:str):
         )
 
         # Invoke the specified, existing agent version.
-        openai = project.get_openai_client()
+       
 
         logger.info(
             "Invoking agent=%s version=%s",
@@ -54,18 +54,12 @@ def main(query:str):
             agent_version,
         )
 
+        openai = project.get_openai_client(agent_name=agent_name)
+        
         response = openai.responses.create(
-            input=(
-                query.strip()
-            ),
-            extra_body={
-                "agent_reference": {
-                    "name": agent_name,
-                    "type": "agent_reference",
-                    "version": agent_version,
-                }
-            },
-        )
+                    input=query.strip(),
+                )
+        
 
         print("\n--- Agent Response ---")
         print(response.output_text)
